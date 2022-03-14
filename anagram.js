@@ -26,3 +26,16 @@ console.log(validAnagram('racecar', 'carrace'))
 console.log(validAnagram('wiwy', 'broomstick'))
 console.log(validAnagram('wiwy', 'wiw'))
 console.log(validAnagram('wawwoo', 'owowaw'))
+
+
+const isAnagram = (firstWord, secondWord) => {
+    // For case insensitivity, change both words to lowercase.
+    var a = firstWord.toLowerCase();
+    var b = secondWord.toLowerCase();
+
+    // Sort the strings, and join the resulting array to a string. Compare the results
+    a = a.split("").sort().join("");
+    b = b.split("").sort().join("");
+
+    return a === b;
+}
