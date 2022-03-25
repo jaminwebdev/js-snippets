@@ -10,9 +10,9 @@ const fibonacciRecursive = (number) => {
 // O(n)
 const fibonacciRecursiveCached = () => {
     let cache = {};
-    
+
     const fib = (number) => {
-        if(number in cache) return cache[number]
+        if(cache[number]) return cache[number]
 
         if(number < 2) return number; 
 
