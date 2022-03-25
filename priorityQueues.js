@@ -1,3 +1,4 @@
+// also see binary heap file
 class PriorityQueue {
     constructor(){
         this.values = [];
