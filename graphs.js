@@ -2,17 +2,13 @@
 class Graph {
     constructor() {
         this.adjacencyList = {};
-        this.numberOfNodes = 0;
     }
 
     addVertext(vertex) {
         if(!this.adjacencyList[vertex]) {
             this.adjacencyList[vertex] = [];
-            this.numberOfNodes++;
             return this;
         }
-
-        return;
     }
 
     addEdge(vertex1, vertex2) {
