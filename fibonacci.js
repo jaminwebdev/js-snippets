@@ -22,7 +22,7 @@ const fibonacciRecursiveCached = () => {
     return fib;
 }
 
-// O(n)
+// O(n) - tabulated
 const fibonacciIterative = (number) => {
     let arr = [0, 1];
     for(i = 2; i <= number; i++) {
