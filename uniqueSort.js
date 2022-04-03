@@ -20,7 +20,7 @@ const uniqSort = (arr) => {
 console.log(`Unique sort with filter - [ ${uniqSort(myArray)} ]`);
 
 const uniqSortSet = (arr) => {
-    const uniques = [...new Set([...arr])];
+    const uniques = [...new Set([arr])];
 
     return uniques.sort( (a, b) => a - b);
 
