@@ -1,5 +1,5 @@
 // generic memoization for simple use cases
-const memoize = (cb) => {
+const memoize = (callback) => {
     let cache = {};
 
     return (item) => {
@@ -9,7 +9,7 @@ const memoize = (cb) => {
         }
 
         console.log('not in cache - calculating');
-        let result = cb(item);
+        let result = callback(item);
         cache[item] = result;
         return result;
     }
