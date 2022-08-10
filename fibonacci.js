@@ -41,17 +41,17 @@ const fibonacciIterativeReduce = (number) => {
 
 //
 console.time('fibRecursive');
-console.log(fibonacciRecursive(20));
+console.log(fibonacciRecursive(30));
 console.timeEnd('fibRecursive');
 
 console.time('fibRecursiveCached');
-console.log(fibonacciRecursiveCached()(20));
+console.log(fibonacciRecursiveCached()(30));
 console.timeEnd('fibRecursiveCached');
 
 console.time('fibIterative');
-console.log(fibonacciIterative(20));
-console.timeEnd('fibIterative');
+console.log(fibonacciIterative(30));
+console.timeEnd('fibIterative');1
 
 console.time('fibIterativeReduce');
-console.log(fibonacciIterativeReduce(20));
+console.log(fibonacciIterativeReduce(30));
 console.timeEnd('fibIterativeReduce');
