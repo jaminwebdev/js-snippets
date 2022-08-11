@@ -11,12 +11,12 @@ function arraySquareEquivalents(arr1, arr2) {
     let frequencyCounter1 = {};
     let frequencyCounter2 = {};
     
-    arr1.forEach( (val) => {
+    arr1.forEach( val => {
       frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
       // frequencyCounter1[val] ? frequencyCounter1[val]++ : frequencyCounter1[val] = 1;
     })
     
-      arr2.forEach( (val) => {
+      arr2.forEach( val => {
       frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
     })
     
@@ -29,8 +29,6 @@ function arraySquareEquivalents(arr1, arr2) {
       }
     }
 
-
-    
     return true;
   }
   
@@ -47,7 +45,7 @@ function arraySquareEquivalents(arr1, arr2) {
     
     let firstArraySquares = {};
     
-    arr1.forEach( (val) => {
+    arr1.forEach( val => {
       firstArraySquares[val ** 2] = (firstArraySquares[val ** 2] || 0) + 1;
     })
     
