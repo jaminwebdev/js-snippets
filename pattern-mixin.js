@@ -98,3 +98,5 @@ menu.on("select", value => alert(`Value selected: ${value}`));
 // triggers the event => the handler above runs and shows:
 // Value selected: 123
 menu.choose("123");
+
+// functional mixins: https://medium.com/javascript-scene/functional-mixins-composing-software-ffb66d5e731c
