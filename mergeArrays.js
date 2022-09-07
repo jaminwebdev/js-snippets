@@ -20,11 +20,12 @@ const merge = (left, right) => {
 
 const mergedArrays = merge([1, 5, 7], [2, 3, 9]);
 
+// also sorts
 const lookupMerge = (array1, array2) => {
     return Object.values([...array1, ...array2].reduce((accum, item) => 
         ({...accum, [item]:item }), 
     {}))
 }
-
-const lookupMergedArray = lookupMerge([1, 3, 4], [2, 5, 6])
-console.log(lookupMergedArray)
+const now = performance.now()
+const lookupMergedArray = lookupMerge([1, 3, 4, 44, 32], [2, 5, 6, 20, 304])
+console.log(performance.now() - now)

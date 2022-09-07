@@ -36,11 +36,12 @@ const merge = (left, right) => {
 
 }
 
+const now = performance.now()
 const unorderedArray = [23, 1, 54, 3, 32, 6, 9, 15, 23];
+console.log(performance.now() - now);
 
 console.log(mergeSort(unorderedArray));
 
-const array1 = [1, 3, 5, 7, 9];
-const array2 = [2, 4, 6, 8];
-
+// const array1 = [1, 3, 5, 7, 9];
+// const array2 = [2, 4, 6, 8];
 // console.log(merge(array1, array2));
