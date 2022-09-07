@@ -1,5 +1,6 @@
 // the module pattern is perhaps the most important patterns in JS
 // in general - it keeps portions of your application isolated from others, controlling public APIs
+// link: https://www.patterns.dev/posts/classic-design-patterns/#modulepatternjavascript
 
 // Classic Module Pattern - supported by IIFEs ----
 const MyModule = (() => {
