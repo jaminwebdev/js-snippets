@@ -69,7 +69,7 @@ const decodeMorse = (morseCode) => {
     return morseCode.trim().split('   ').map(decodeMorseWord).join(' ');
 }
 
-console.log(decodeMorse('.... . -.--   .--- ..- -.. .'))
+console.log(decodeMorse('.... . -.--   .--- ..- -.. .')) // HEY JUDE
 
 const decodeMorseRegex = (morseCode) => {
     return morseCode
