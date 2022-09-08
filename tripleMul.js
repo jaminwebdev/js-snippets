@@ -1,3 +1,4 @@
+// silly curry example
 function mul (x) {
     return function (y) { // anonymous function
       return function (z) { // anonymous function
