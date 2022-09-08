@@ -1,0 +1,22 @@
+{
+  "name": "js-snippets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anagram.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaminwebdev/js-snippets.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaminwebdev/js-snippets/issues"
+  },
+  "homepage": "https://github.com/jaminwebdev/js-snippets#readme",
+  "devDependencies": {
+    "jest": "^29.0.2"
+  }
+}
