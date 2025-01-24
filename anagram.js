@@ -1,5 +1,5 @@
 // similar to arraySquareEquivalent snippet
-const validAnagram = (firstWord, secondWord) => {
+export const validAnagram = (firstWord, secondWord) => {
     if(firstWord.length !== secondWord.length) {
         return false;
     }
@@ -22,7 +22,7 @@ const validAnagram = (firstWord, secondWord) => {
     return true;
 }
 
-const sortAnagram = (firstWord, secondWord) => {
+export const sortAnagram = (firstWord, secondWord) => {
     // For case insensitivity, change both words to lowercase.
     var a = firstWord.toLowerCase();
     var b = secondWord.toLowerCase();
@@ -32,9 +32,4 @@ const sortAnagram = (firstWord, secondWord) => {
     b = b.split("").sort().join("");
 
     return a === b;
-}
-
-module.exports = {
-    sortAnagram,
-    validAnagram
 }
