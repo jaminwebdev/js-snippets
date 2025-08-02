@@ -1,4 +1,4 @@
-function twoSum(nums, target) {
+export const twoSum = (nums, target) => {
   const numMap = {}; // Initialize an empty object to act as a hash map
 
   for (let i = 0; i < nums.length; i++) {

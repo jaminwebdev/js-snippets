@@ -1,22 +1,32 @@
-import { describe, it, expect } from 'vitest'
-import { validAnagram, sortAnagram } from '../anagram'
+import { describe, it, expect } from 'vitest';
+import { validAnagram, sortAnagram } from '../anagram';
 
-describe('testing sort anagrams', () => {
-  it('should be a valid anagram', () => {
-    expect(sortAnagram('racecar', 'carrace')).toBe(true)
-  })
+describe('validAnagram', () => {
+  it('should return true for valid anagrams', () => {
+    expect(validAnagram('anagram', 'nagaram')).toBe(true);
+    expect(validAnagram('rat', 'car')).toBe(false);
+  });
 
-  it('should not be a valid anagram', () => {
-    expect(sortAnagram('wiwy', 'broomstick')).toBe(false)
-  })
-})
+  it('should return false for strings with different lengths', () => {
+    expect(validAnagram('aaz', 'aa')).toBe(false);
+  });
 
-describe('hashmap anagram', () => {
-  it('should be a valid anagram', () => {
-    expect(validAnagram('racecar', 'carrace')).toBe(true)
-  })
+  it('should handle empty strings', () => {
+    expect(validAnagram('', '')).toBe(true);
+  });
+});
 
-  it('should not be a valid anagram', () => {
-    expect(validAnagram('wiwy', 'broomstick')).toBe(false)
-  })
-})
+describe('sortAnagram', () => {
+  it('should return true for valid anagrams', () => {
+    expect(sortAnagram('anagram', 'nagaram')).toBe(true);
+    expect(sortAnagram('rat', 'car')).toBe(false);
+  });
+
+  it('should be case-insensitive', () => {
+    expect(sortAnagram('Anagram', 'Nagaram')).toBe(true);
+  });
+
+  it('should handle empty strings', () => {
+    expect(sortAnagram('', '')).toBe(true);
+  });
+});

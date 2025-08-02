@@ -1,4 +1,4 @@
-const binarySearchArrayRecursive = function (arr =[], value = 0, start = 0, end = (arr.length -1)) {
+export const binarySearchArrayRecursive = function (arr =[], value = 0, start = 0, end = (arr.length -1)) {
       
     // Base Condition
     if (start > end) return false;
@@ -22,7 +22,7 @@ let value = 7;
 // start = 0, end = 1 -> mid = (0+1)/2 = 0.5, floor = 0, mid = 0 -> arr[0] = 1 -> 1 < value, so search in right, mid + 1 (1 + 1), 2 = new start
 // start > end (2 > 1), so base condition is true and false is returned
 
-const binarySearchArrayIterative = function (array, value) {
+export const binarySearchArrayIterative = function (array, value) {
   
     let start = 0;
     let end = array.length-1;

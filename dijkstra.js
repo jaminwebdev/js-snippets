@@ -17,7 +17,7 @@ class SimplePriorityQueue {
     }
 }
 
-class WeightedGraph {
+export class WeightedGraph {
     constructor() {
         this.adjacencyList = {};
     }

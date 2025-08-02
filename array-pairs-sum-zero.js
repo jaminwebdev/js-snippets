@@ -1,4 +1,4 @@
-const arrayPairsSumZero = (array) => {
+export const arrayPairsSumZero = (array) => {
     const lookup = {};
 
     for (let value of array) {
@@ -7,8 +7,8 @@ const arrayPairsSumZero = (array) => {
         if(value < 0 && lookup[Math.abs(value)]) {
             return [value, Math.abs(value)];
         }
-        if(value > 0 && lookup[`-${value}`]) {
-            return [value, `-${value}`];
+        if(value > 0 && lookup[-value]) {
+            return [-value, value];
         }
     }
 
@@ -24,7 +24,7 @@ const myArray = [-7, -3, -2, -1, 0, 2, 5];
 // and moving the pointers towards the middle based on the sum
 // if sum of two ends is < 0, move the left pointer towards the end (increment its index)
 // if sum of two ends is > 0, move the right pointer towards the beginning (decrement its index)
-const arrayPairsSumZero2 = (array) => {
+export const arrayPairsSumZero2 = (array) => {
     let left = 0;
     let right = array.length - 1;
     while(left < right) {

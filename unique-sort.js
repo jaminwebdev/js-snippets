@@ -3,7 +3,7 @@
 
 const myArray = [2, 4, 1, 3, 2, 3, 5, 2, 1];
 
-const uniqSort = (arr) => {
+export const uniqSort = (arr) => {
 
     let breadcrumbs = {};
 

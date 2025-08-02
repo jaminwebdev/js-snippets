@@ -6,7 +6,7 @@ const swap = (arr, index1, index2) => {
 // unfortunately this is a nested solution - big O(n^2)
 // on sub-iteration, if current value is greater than the value at current index + 1, swap
 
-const bblSort = (arr) => {
+export const bblSort = (arr) => {
     for(let i = 0; i < arr.length; i++) {
         // arr.length - i - 1 because we've already sorted those higher value elements at the end
         for(let j = 0; j < ( arr.length - i -1 ); j++) {

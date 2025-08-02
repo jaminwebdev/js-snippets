@@ -1,4 +1,4 @@
-class maxBinaryHeap {
+export class maxBinaryHeap {
     constructor() {
         this.values = [];
     }
@@ -84,7 +84,7 @@ class Node {
     }
 }
 
-class PriorityQueue {
+export class PriorityQueue {
     constructor(){
         this.values = [];
     }

@@ -1,5 +1,5 @@
 // silly curry example
-function mul (x) {
+export const mul = (x) => {
     return function (y) { // anonymous function
       return function (z) { // anonymous function
         return x * y * z;

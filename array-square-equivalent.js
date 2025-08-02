@@ -3,7 +3,7 @@
 // Given 2 arrays containing integers 
 // write a function that will return true/fast depeneding on if the square of each item in the first array
 // exists in the second array, and with the same frequency
-function arraySquareEquivalents(arr1, arr2) {
+export function arraySquareEquivalents(arr1, arr2) {
     if(arr1.length !== arr2.length) {
       return false;
     }
@@ -38,7 +38,7 @@ function arraySquareEquivalents(arr1, arr2) {
   // console.log(arraySquareEquivalents(array1, array2))
 
   //alternative is to use a single dictionary/hashmap like in the anagram snippet
-  function arraySquareEquivalents2(arr1, arr2) {
+  export function arraySquareEquivalents2(arr1, arr2) {
     if(arr1.length !== arr2.length) {
       return false;
     }
