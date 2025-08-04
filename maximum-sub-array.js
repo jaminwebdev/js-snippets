@@ -1,4 +1,4 @@
-"https://javascript.info/task/maximal-subarray";
+// "https://javascript.info/task/maximal-subarray";
 // no limit
 function getMaxSubSum(arr) {
     let maxSum = 0;
