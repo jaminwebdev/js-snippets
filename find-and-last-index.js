@@ -19,7 +19,7 @@ const loopFirstAndLast = (arr, target) => {
     }
 
     if(!start) {
-        return [-1. -1]
+        return [-1, -1]
     }
 
     return [start, finish]
