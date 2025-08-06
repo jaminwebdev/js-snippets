@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { WeightedGraph } from '../dijkstra';
+import { WeightedGraph } from '../algorithms_and_solutions/dijkstra';
 
 describe('WeightedGraph', () => {
   it('should find the shortest path using Dijkstra\'s algorithm', () => {

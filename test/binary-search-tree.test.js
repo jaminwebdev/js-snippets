@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { BST } from '../binary-search-tree';
+import { BST } from '../data_structures/binary-search-tree';
 
 describe('BST', () => {
   it('should insert values correctly', () => {

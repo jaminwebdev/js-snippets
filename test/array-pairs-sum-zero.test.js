@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { arrayPairsSumZero, arrayPairsSumZero2 } from '../array-pairs-sum-zero';
+import { arrayPairsSumZero, arrayPairsSumZero2 } from '../algorithms_and_solutions/array-pairs-sum-zero';
 
 describe('arrayPairsSumZero', () => {
   it('should return the pair that sums to zero', () => {

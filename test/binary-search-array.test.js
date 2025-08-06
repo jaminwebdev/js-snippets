@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { binarySearchArrayRecursive, binarySearchArrayIterative } from '../binary-search-array';
+import { binarySearchArrayRecursive, binarySearchArrayIterative } from '../algorithms_and_solutions/binary-search-array';
 
 describe('binarySearchArrayRecursive', () => {
   it('should return true if the value is found', () => {

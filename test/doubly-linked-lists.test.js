@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Node, DoublyLinkedList } from '../doubly-linked-lists.js';
+import { Node, DoublyLinkedList } from '../data_structures/doubly-linked-lists';
 
 describe('Node', () => {
   it('should create a node with a value', () => {

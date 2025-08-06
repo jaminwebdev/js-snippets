@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { maxBinaryHeap, PriorityQueue } from '../binary-heap';
+import { maxBinaryHeap, PriorityQueue } from '../data_structures/binary-heap';
 
 describe('maxBinaryHeap', () => {
   it('should insert values and maintain the heap property', () => {

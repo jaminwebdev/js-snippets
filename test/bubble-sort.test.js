@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { bblSort } from '../bubble-sort';
+import { bblSort } from '../algorithms_and_solutions/bubble-sort';
 
 describe('bblSort', () => {
   it('should sort the array in ascending order', () => {
