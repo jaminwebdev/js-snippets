@@ -168,24 +168,21 @@ class SinglyLinkedList {
     // reverse in place
     // big O(n) - iteration of entire list
     reverse() {
-        // swap head and tail
-        let current = this.head;
-        this.head = this.tail;
-        this.tail = current;
-        // initialize prev & next to null
-        let prev = null;
-        let next = null;
-        while( current !== null) {
-            // initializing next based on current
-            next = current.next;
-            // setting current's next to previous node (flipping pointer)
-            current.next = prev;
-            // advancing prev
-            prev = current;
-            // advancing current
-            current = next;
-        }
-        return this;
+      // Swap head and tail
+      [this.head, this.tail] = [this.tail, this.head];
+      
+      let curr = this.tail; // Start from new tail (original head)
+      let prev = null;
+      
+      // Reverse each node's pointer
+      while (curr) {
+        let next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+      }
+      
+      return this;
     }
 
     //O(n) - traversal
