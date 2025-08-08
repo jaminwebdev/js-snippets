@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { merge, lookupMerge, spreadSortMerge } from '../algorithms_and_solutions/merge-sorted-arrays';
+import { merge, lookupMerge, spreadSortMerge } from '../algorithms/merge-sorted-arrays';
 
 describe('merge', () => {
   it('should merge two sorted arrays', () => {

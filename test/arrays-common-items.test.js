@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { doArraysContainCommon } from '../algorithms_and_solutions/arrays-common-items';
+import { doArraysContainCommon } from '../problems/arrays-common-items';
 
 describe('doArraysContainCommon', () => {
   it('should return true if arrays have a common item', () => {

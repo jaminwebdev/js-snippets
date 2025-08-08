@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { arraySquareEquivalents, arraySquareEquivalents2 } from '../algorithms_and_solutions/array-square-equivalent';
+import { arraySquareEquivalents, arraySquareEquivalents2 } from '../problems/array-square-equivalent';
 
 describe('arraySquareEquivalents', () => {
   it('should return true if arrays are equivalent', () => {

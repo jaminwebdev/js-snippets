@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { validAnagram, sortAnagram } from '../algorithms_and_solutions/anagram';
+import { validAnagram, sortAnagram } from '../problems/anagram';
 
 describe('validAnagram', () => {
   it('should return true for valid anagrams', () => {
