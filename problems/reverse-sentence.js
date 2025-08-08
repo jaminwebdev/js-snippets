@@ -6,6 +6,4 @@ let reverseEntireSentence = reverseBySeparator(string, "");
 // Output becomes emocleW ot siht tpircsavaJ !ediuG
 let reverseEachWord = reverseBySeparator(reverseEntireSentence, " ");
 
-const reverseBySeparator = (string, separator) => {
-  return string.split(separator).reverse().join(separator);
-}
+export const reverseBySeparator = (string, separator) => string.split(separator).reverse().join(separator);

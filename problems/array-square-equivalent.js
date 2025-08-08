@@ -1,7 +1,5 @@
-// similar to anagram snippet
-
 // Given 2 arrays containing integers 
-// write a function that will return true/fast depeneding on if the square of each item in the first array
+// write a function that will return true/false depending on if the square of each item in the first array
 // exists in the second array, and with the same frequency
 export function arraySquareEquivalents(arr1, arr2) {
     if(arr1.length !== arr2.length) {

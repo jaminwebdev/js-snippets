@@ -5,7 +5,7 @@ const exampleArray = [2, 4, 5, 5, 5, 5, 5, 7, 9, 9];
 
 // becasue array is sorted, all items are adjacent to each other
 
-const loopFirstAndLast = (arr, target) => {
+export const loopFirstAndLast = (arr, target) => {
     let start, finish
     for (let [index, num] of arr.entries()) {
         if (!start && num === target) {
@@ -31,7 +31,7 @@ const loopFirstAndLast = (arr, target) => {
 // ex: { 5: [2, 3, 4, 5] }
 // return first and last index of lookup array
 // this will work for unsorted array as well
-const reduceLookupFistAndLast = (arr, target) => {
+export const reduceLookupFistAndLast = (arr, target) => {
     const targetIndexesObj = arr.reduce((lookup, num, index) => { 
         if (num === target) {
             lookup[target].push(index);
@@ -48,4 +48,4 @@ const reduceLookupFistAndLast = (arr, target) => {
     return [indices[0], indices[indices.length - 1]]
 }
 
-console.log(reduceLookupFistAndLast(exampleArray, 5))
+export const arrayMethods = (arr, target) => [arr.indexOf(target), arr.lastIndexOf(target)]

@@ -1,3 +1,6 @@
+// given an array of integers, return the pair of integers that sum to 0
+// if none exist, return false
+
 export const arrayPairsSumZero = (array) => {
     const lookup = {};
 

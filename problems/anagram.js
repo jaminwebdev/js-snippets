@@ -1,4 +1,5 @@
-// similar to arraySquareEquivalent snippet
+// given two strings, return whether they are anagrams or not
+
 export const validAnagram = (firstWord, secondWord) => {
     if(firstWord.length !== secondWord.length) {
         return false;
