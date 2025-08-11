@@ -1,15 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { stackArray, createStack, StackLinkedList, createStackLinkedList } from '../data_structures/stack.js';
+import { StackArray, createStack, StackLinkedList, createStackLinkedList } from '../data_structures/stack.js';
 
-describe('stackArray', () => {
+describe('StackArray', () => {
     it('should push a value to the stack', () => {
-        const stack = new stackArray();
+        const stack = new StackArray();
         stack.push(10);
         expect(stack.peek()).toBe(10);
     });
 
     it('should pop a value from the stack', () => {
-        const stack = new stackArray();
+        const stack = new StackArray();
         stack.push(10);
         stack.push(20);
         stack.pop();
@@ -17,14 +17,14 @@ describe('stackArray', () => {
     });
 
     it('should peek at the top value of the stack', () => {
-        const stack = new stackArray();
+        const stack = new StackArray();
         stack.push(10);
         stack.push(20);
         expect(stack.peek()).toBe(20);
     });
 
     it('should be chainable', () => {
-        const stack = new stackArray();
+        const stack = new StackArray();
         stack.push(10).push(20).pop();
         expect(stack.peek()).toBe(10);
     });
