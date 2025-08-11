@@ -1,4 +1,4 @@
-export class queueArray {
+export class QueueArray {
     constructor() {
         this.array = []
     }
@@ -18,16 +18,14 @@ export const createQueue = () => {
   let array = [];
   
   const push = val =>  {
-    array.push(val)
-    return publicAPI
+    return array.push(val)
   }
   
   const dequeue = () => {
-    array.shift();
-    return publicAPI;
+    return array.shift();
   }
 
-  const peek = ()  => array[array.length - 1];
+  const peek = ()  => array[0];
 
   const getSize = () => array.length;
 
@@ -45,55 +43,59 @@ export const createQueue = () => {
 }
 
 export class Node {
-    constructor(val) {
-        this.value = val;
-        this.next = null;
-    }
+  constructor(val) {
+      this.value = val;
+      this.next = null;
+  }
 }
 
-// like with stacks, we're removing/adding to/from the beginning to keep O(1)
-// arrays shifting requires O(n) for re-indexing remaining indexes
-// FIFO
-export class queueLinkedList {
-    constructor() {
-        this.first = null;
-        this.last = null;
-        this.size = 0;
-    }
+// Queue implementation using a linked list
+// FIFO (First In, First Out) - add to end, remove from beginning for O(1) operations
+export class QueueLinkedList {
+  constructor() {
+      this.first = null;
+      this.last = null;
+      this.size = 0;
+  }
 
-    push(val) {
-        const newNode = new Node(val);
+  enqueue(val) {
+      const newNode = new Node(val);
 
-        if(!this.first) {
-            this.first = newNode;
-            this.last = newNode;
-            this.size++;
-            return this.size;
-        }
+      if (!this.first) {
+          this.first = newNode;
+          this.last = newNode;
+      } else {
+          this.last.next = newNode;
+          this.last = newNode;
+      }
 
-        this.last.next = newNode;
-        this.last = newNode;
-        this.size++;
-        return this.size;
-    }
+      this.size++;
+      return this.size;
+  }
 
-    dequeue() {
-        if(!this.first) {
-            return;
-        }
-        if(this.first === this.last) {
-            this.last = null;
-        }
+  dequeue() {
+      if (!this.first) {
+          return undefined;
+      }
 
-        // save old first ref
-        let oldFirst = this.first;
-        // set queue's first to OG first's next prop
-        this.first = oldFirst.next;
-        // sever ties with pointer to the rest of the list (& new first)
-        oldFirst.next = null;
-        this.size--;
-        return oldFirst.value;
-    }
+      const temp = this.first;
+      this.first = this.first.next;
+      
+      if (!this.first) {  // Queue is now empty
+          this.last = null;
+      }
+
+      this.size--;
+      return temp.value;
+  }
+
+  peek() {
+      return this.first ? this.first.value : undefined;
+  }
+
+  isEmpty() {
+      return this.size === 0;
+  }
 }
 
 export const createNode = (value) => 
@@ -104,58 +106,53 @@ export const createNode = (value) =>
 
 
 export const createQueueLinkedList = () => {
-    // Private variables
-    let first = null;
-    let last = null;
-    let size = 0;
-    
-    // Public methods using arrow functions
-    const enqueue = (val) => {
-        const newNode = createNode(val);
-        
-        if (!first) {
-            first = newNode;
-            last = newNode;
-        } else {
-            last.next = newNode;
-            last = newNode;
-        }
-        
-        size++;
-        return size;
-    };
-    
-    const dequeue = () => {
-        if (!first) {
-            return undefined;
-        }
-        
-        if (first === last) {
-            last = null;
-        }
-        
-        // Save old first ref
-        const oldFirst = first;
-        // Set queue's first to original first's next prop
-        first = oldFirst.next;
-        // Sever ties with pointer to the rest of the list
-        oldFirst.next = null;
-        size--;
-        return oldFirst.value;
-    };
-    
-    const peek = () => first ? first.value : undefined;
-    
-    const getSize = () => size;
-    
-    const isEmpty = () => size === 0;
-    
-    // Revealing module pattern - expose only what should be public
-    return {
-        enqueue,
-        dequeue,
-        peek,
-        getSize,
-        isEmpty
-    };
+  let first = null;
+  let last = null;
+  let size = 0;
+  
+  const enqueue = (val) => {
+      const newNode = createNode(val);
+      
+      if (!first) {
+          first = newNode;
+          last = newNode;
+      } else {
+          last.next = newNode;
+          last = newNode;
+      }
+      
+      size++;
+      return size;
+  };
+  
+  const dequeue = () => {
+      if (!first) {
+          return undefined;
+      }
+      
+      const temp = first;
+      first = first.next;
+      
+      if (!first) {  // Queue is now empty
+          last = null;
+      }
+      
+      size--;
+      return temp.value;
+  };
+  
+  const peek = () => first ? first.value : undefined;
+  
+  const getSize = () => size;
+  
+  const isEmpty = () => size === 0;
+  
+  // Revealing module pattern - expose only what should be public
+  return {
+      enqueue,
+      dequeue,
+      peek,
+      getSize,
+      isEmpty
+  };
 };

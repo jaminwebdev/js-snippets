@@ -1,130 +1,168 @@
 import { describe, it, expect } from 'vitest';
-import { queueArray, createQueue, queueLinkedList, createQueueLinkedList } from '../data_structures/queues.js';
+import { QueueArray, createQueue, QueueLinkedList, createQueueLinkedList } from '../data_structures/queues';
 
-describe('queueArray', () => {
-    it('should push a value to the queue', () => {
-        const queue = new queueArray();
-        queue.push(10);
-        expect(queue.array[0]).toBe(10);
+describe('QueueArray', () => {
+    it('should create an empty queue', () => {
+        const queue = new QueueArray();
+        expect(queue.array).toEqual([]);
     });
 
-    it('should shift a value from the queue', () => {
-        const queue = new queueArray();
-        queue.push(10);
-        queue.push(20);
+    it('should push items to the queue', () => {
+        const queue = new QueueArray();
+        queue.push(1);
+        queue.push(2);
+        expect(queue.array).toEqual([1, 2]);
+    });
+
+    it('should shift items from the queue', () => {
+        const queue = new QueueArray();
+        queue.push(1);
+        queue.push(2);
         queue.shift();
-        expect(queue.array[0]).toBe(20);
+        expect(queue.array).toEqual([2]);
     });
 
-    it('should be chainable', () => {
-        const queue = new queueArray();
-        queue.push(10).push(20).shift();
-        expect(queue.array[0]).toBe(20);
+    it('should allow chaining', () => {
+        const queue = new QueueArray();
+        queue.push(1).push(2).shift();
+        expect(queue.array).toEqual([2]);
     });
 });
 
 describe('createQueue', () => {
-    it('should push a value to the queue', () => {
+    it('should create an empty queue', () => {
         const queue = createQueue();
-        queue.push(10);
-        expect(queue.peek()).toBe(10);
+        expect(queue.isEmpty()).toBe(true);
+        expect(queue.getSize()).toBe(0);
     });
 
-    it('should dequeue a value from the queue', () => {
+    it('should push items and update size', () => {
         const queue = createQueue();
-        queue.push(10);
-        queue.push(20);
-        queue.dequeue();
-        expect(queue.peek()).toBe(20);
-    });
-
-    it('should peek at the last value of the queue', () => {
-        const queue = createQueue();
-        queue.push(10);
-        queue.push(20);
-        expect(queue.peek()).toBe(20);
-    });
-
-    it('should return the correct size', () => {
-        const queue = createQueue();
-        queue.push(10);
-        queue.push(20);
+        queue.push(1);
+        queue.push(2);
+        expect(queue.isEmpty()).toBe(false);
         expect(queue.getSize()).toBe(2);
     });
 
-    it('should check if the queue is empty', () => {
+    it('should dequeue items', () => {
         const queue = createQueue();
+        queue.push(1);
+        queue.push(2);
+        queue.dequeue();
+        expect(queue.getSize()).toBe(1);
+        expect(queue.peek()).toBe(2);
+    });
+
+    it('should peek at the first item', () => {
+        const queue = createQueue();
+        queue.push(1);
+        queue.push(2);
+        expect(queue.peek()).toBe(1);
+    });
+
+    it('should be empty after all items are dequeued', () => {
+        const queue = createQueue();
+        queue.push(1);
+        queue.push(2);
+        queue.dequeue();
+        queue.dequeue();
         expect(queue.isEmpty()).toBe(true);
-        queue.push(10);
-        expect(queue.isEmpty()).toBe(false);
+        expect(queue.getSize()).toBe(0);
     });
 });
 
-describe('queueLinkedList', () => {
-    it('should push a value to the queue', () => {
-        const queue = new queueLinkedList();
-        queue.push(10);
-        expect(queue.first.value).toBe(10);
-        expect(queue.last.value).toBe(10);
-        queue.push(20);
-        expect(queue.first.value).toBe(10);
-        expect(queue.last.value).toBe(20);
+describe('QueueLinkedList', () => {
+    it('should create an empty queue', () => {
+        const queue = new QueueLinkedList();
+        expect(queue.isEmpty()).toBe(true);
+        expect(queue.size).toBe(0);
+        expect(queue.first).toBe(null);
+        expect(queue.last).toBe(null);
     });
 
-    it('should dequeue a value from the queue', () => {
-        const queue = new queueLinkedList();
-        queue.push(10);
-        queue.push(20);
+    it('should enqueue items', () => {
+        const queue = new QueueLinkedList();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        expect(queue.size).toBe(2);
+        expect(queue.first.value).toBe(1);
+        expect(queue.last.value).toBe(2);
+    });
+
+    it('should dequeue items', () => {
+        const queue = new QueueLinkedList();
+        queue.enqueue(1);
+        queue.enqueue(2);
         const dequeued = queue.dequeue();
-        expect(dequeued).toBe(10);
-        expect(queue.first.value).toBe(20);
+        expect(dequeued).toBe(1);
+        expect(queue.size).toBe(1);
+        expect(queue.first.value).toBe(2);
+    });
+
+    it('should peek at the first item', () => {
+        const queue = new QueueLinkedList();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        expect(queue.peek()).toBe(1);
     });
 
     it('should handle dequeueing from an empty queue', () => {
-        const queue = new queueLinkedList();
+        const queue = new QueueLinkedList();
         expect(queue.dequeue()).toBe(undefined);
+    });
+
+    it('should be empty after all items are dequeued', () => {
+        const queue = new QueueLinkedList();
+        queue.enqueue(1);
+        queue.dequeue();
+        expect(queue.isEmpty()).toBe(true);
+        expect(queue.first).toBe(null);
+        expect(queue.last).toBe(null);
     });
 });
 
 describe('createQueueLinkedList', () => {
-    it('should enqueue a value to the queue', () => {
-        const queue = createQueueLinkedList();
-        queue.enqueue(10);
-        expect(queue.peek()).toBe(10);
-    });
-
-    it('should dequeue a value from the queue', () => {
-        const queue = createQueueLinkedList();
-        queue.enqueue(10);
-        queue.enqueue(20);
-        const dequeued = queue.dequeue();
-        expect(dequeued).toBe(10);
-        expect(queue.peek()).toBe(20);
-    });
-
-    it('should peek at the first value of the queue', () => {
-        const queue = createQueueLinkedList();
-        queue.enqueue(10);
-        queue.enqueue(20);
-        expect(queue.peek()).toBe(10);
-    });
-
-    it('should return the correct size', () => {
-        const queue = createQueueLinkedList();
-        queue.enqueue(10);
-        queue.enqueue(20);
-        expect(queue.getSize()).toBe(2);
-    });
-
-    it('should check if the queue is empty', () => {
+    it('should create an empty queue', () => {
         const queue = createQueueLinkedList();
         expect(queue.isEmpty()).toBe(true);
-        queue.enqueue(10);
-        expect(queue.isEmpty()).toBe(false);
+        expect(queue.getSize()).toBe(0);
+    });
+
+    it('should enqueue items', () => {
+        const queue = createQueueLinkedList();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        expect(queue.getSize()).toBe(2);
+        expect(queue.peek()).toBe(1);
+    });
+
+    it('should dequeue items', () => {
+        const queue = createQueueLinkedList();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        const dequeued = queue.dequeue();
+        expect(dequeued).toBe(1);
+        expect(queue.getSize()).toBe(1);
+        expect(queue.peek()).toBe(2);
+    });
+
+    it('should peek at the first item', () => {
+        const queue = createQueueLinkedList();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        expect(queue.peek()).toBe(1);
     });
 
     it('should handle dequeueing from an empty queue', () => {
         const queue = createQueueLinkedList();
         expect(queue.dequeue()).toBe(undefined);
+    });
+
+    it('should be empty after all items are dequeued', () => {
+        const queue = createQueueLinkedList();
+        queue.enqueue(1);
+        queue.dequeue();
+        expect(queue.isEmpty()).toBe(true);
+        expect(queue.getSize()).toBe(0);
     });
 });
