@@ -60,42 +60,37 @@ export class Node {
 // pop will remove from the beginning of the linked list instead of popping from the end
 // FILO
 export class StackLinkedList {
-    constructor() {
-        this.first = null;
-        this.last = null;
-        this.size = 0;
-    }
+  constructor() {
+      this.first = null;
+      this.size = 0;
+  }
 
-    push(val) {
-        let node = new Node(val);
-        if(!this.first) {
-            this.first = node;
-            this.last = node;
-            return this;
-        }
+  push(val) {
+      let node = new Node(val);
+      node.next = this.first;
+      this.first = node;
+      this.size++;
+      return this.size;
+  }
 
-        let temp = this.first;
-        this.first = node;
-        this.first.next = temp;
-        this.size++;
-        return this.size;
-    }
+  pop() {
+      if (!this.first) {
+          return undefined;
+      }
 
-    pop() {
-        if(!this.first) {
-            return;
-        }
+      let temp = this.first;
+      this.first = this.first.next;
+      this.size--;
+      return temp.value;
+  }
 
-        if(this.first === this.last) {
-            this.last = null; 
-        }
+  peek() {
+      return this.first ? this.first.value : undefined;
+  }
 
-        let temp = this.first;
-        this.first = this.first.next;
-        this.size--;
-        return temp.value;
-    }
-
+  isEmpty() {
+      return this.size === 0;
+  }
 }
 
 export const createNode = (value) => 
@@ -104,24 +99,14 @@ export const createNode = (value) =>
     next: null
   })
 
-
 export const createStackLinkedList = () => {
   let first = null;
-  let last = null;
   let size = 0;
   
   const push = val => {
       const node = createNode(val);
-      
-      if (!first) {
-          first = node;
-          last = node;
-      } else {
-          const temp = first;
-          first = node;
-          first.next = temp;
-      }
-      
+      node.next = first;
+      first = node;
       size++;
       return size;
   }
@@ -129,10 +114,6 @@ export const createStackLinkedList = () => {
   const pop = () => {
       if (!first) {
           return undefined;
-      }
-      
-      if (first === last) {
-          last = null;
       }
       
       const temp = first;
@@ -148,15 +129,13 @@ export const createStackLinkedList = () => {
   const isEmpty = () => size === 0;
   
   // Revealing module pattern - expose only what should be public
-  const publicAPI = {
+  return {
       push,
       pop,
       peek,
       getSize,
       isEmpty
   };
-  
-  return publicAPI;
 }
 
 // Usage example:
