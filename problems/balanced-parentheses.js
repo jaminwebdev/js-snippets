@@ -1,16 +1,17 @@
 export const isBalanced = (str) => {
   const stack = [];
-  const characters = { 
+  const map = { 
     ')': '(', 
     '}': '{', 
     ']': '['
   };
 for (const char of str) {
-      
-    if (!characters[char]){
+    // pushing opening paren
+    if (!map[char]){
        stack.push(char); 
-    } 
-    else if (stack.pop() !== characters[char]){
+       
+    } else if (stack.pop() !== map[char]){ 
+      // ^ checking if last opening paren in stack === map value (closing parens are map keys - map[')'] -> '(' )
         return false;
     } 
   }
