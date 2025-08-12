@@ -9,11 +9,19 @@ export class StackArray {
 
     push(val) {
         this.array.push(val);
-        return this.array.length;
+        return this.size();
     }
 
     pop() {
         return this.array.pop();
+    }
+
+    size() {
+      return this.array.length;
+    }
+
+    isEmpty() {
+      return this.size > 0;
     }
 }
 
