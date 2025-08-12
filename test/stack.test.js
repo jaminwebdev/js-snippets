@@ -25,7 +25,9 @@ describe('StackArray', () => {
 
     it('should be chainable', () => {
         const stack = new StackArray();
-        stack.push(10).push(20).pop();
+        stack.push(10)
+        stack.push(20)
+        stack.pop();
         expect(stack.peek()).toBe(10);
     });
 });

@@ -9,12 +9,11 @@ export class StackArray {
 
     push(val) {
         this.array.push(val);
-        return this;
+        return this.array.length;
     }
 
     pop() {
-        this.array.pop();
-        return this;
+        return this.array.pop();
     }
 }
 
@@ -22,15 +21,12 @@ export const createStack = () => {
   let array = [];
   
   const push = val =>  {
-    array.push(val)
-    return publicAPI
+    array.push(val);
+    return array.length;
   }
   
-  const pop = () => {
-    array.pop();
-    return publicAPI;
-  }
-
+  const pop = () => array.pop();
+  
   const peek = ()  => array[array.length - 1];
 
   const getSize = () => array.length;
