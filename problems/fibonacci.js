@@ -1,5 +1,5 @@
 // O(2^n) - terrible
-const fibonacciRecursive = (number) => {
+export const fibonacciRecursive = (number) => {
     if(number < 2) {
         return number;
     }
@@ -8,7 +8,7 @@ const fibonacciRecursive = (number) => {
 }
 
 // O(n)
-const fibonacciRecursiveCached = () => {
+export const fibonacciRecursiveCached = () => {
     let cache = {};
 
     const fib = (number) => {
@@ -23,7 +23,7 @@ const fibonacciRecursiveCached = () => {
 }
 
 // O(n) - tabulated
-const fibonacciIterative = (number) => {
+export const fibonacciIterative = (number) => {
     let arr = [0, 1];
     for(let i = 2; i <= number; i++) {
         arr.push(arr[i - 2] + arr[i - 1])
@@ -32,26 +32,9 @@ const fibonacciIterative = (number) => {
 }
 
 // O(n)
-const fibonacciIterativeReduce = (number) => {
+export const fibonacciIterativeReduce = (number) => {
     return  [...Array(number + 1)].reduce( (acc, _, index) => {
         acc.push(index > 1 ? acc[index - 1] + acc[index - 2] : index);
         return acc;
     },[])[number]
 }
-
-//
-console.time('fibRecursive');
-console.log(fibonacciRecursive(30));
-console.timeEnd('fibRecursive');
-
-console.time('fibRecursiveCached');
-console.log(fibonacciRecursiveCached()(30));
-console.timeEnd('fibRecursiveCached');
-
-console.time('fibIterative');
-console.log(fibonacciIterative(30));
-console.timeEnd('fibIterative');1
-
-console.time('fibIterativeReduce');
-console.log(fibonacciIterativeReduce(30));
-console.timeEnd('fibIterativeReduce');
