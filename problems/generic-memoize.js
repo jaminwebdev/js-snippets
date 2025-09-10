@@ -1,5 +1,5 @@
 // generic memoization for simple use cases
-const memoize = (callback) => {
+export const memoize = (callback) => {
     let cache = {};
 
     return (item) => {
@@ -15,7 +15,7 @@ const memoize = (callback) => {
     }
 }
 
-const timesTen = memoize((number) => {
+export const timesTen = memoize((number) => {
     return number * 10;
 })
 
