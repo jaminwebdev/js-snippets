@@ -1,20 +1,24 @@
 // classic fizzbuzz 
-export const fizzBuzz = (num1 = 3, num2 = 5) => {
-  for (let i = 1; i <= 100; i++) {
-      console.log((i % num1 ? '' : 'fizz') + (i % num2 ? '' : 'buzz') || i)
+export const fizzBuzz = (num1 = 3, num2 = 5, limit = 100) => {
+  const result = [];
+  for (let i = 1; i <= limit; i++) {
+      result.push((i % num1 ? '' : 'fizz') + (i % num2 ? '' : 'buzz') || i);
     }
+  return result;
 }
 
-fizzBuzz();
-
-export const fizzBuzzNormal = (num1 = 3, num2 = 5) => {
-  for (let i = 1; i <= 100; i++) {
+export const fizzBuzzNormal = (num1 = 3, num2 = 5, limit = 100) => {
+  const result = [];
+  for (let i = 1; i <= limit; i++) {
     if (i % (num1 * num2) === 0) {
-      console.log("fizzbuzz")
+      result.push("fizzbuzz");
     } else if (i % num1 === 0) {
-      console.log("fizz")
+      result.push("fizz");
     } else if (i % num2 === 0) {
-      console.log("buzz")
+      result.push("buzz");
+    } else {
+      result.push(i);
     }
   }
+  return result;
 }
