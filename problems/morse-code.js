@@ -59,7 +59,7 @@ const MORSE_CODE = {
   '...---...': 'SOS'
 }
 
-const decodeMorse = (morseCode) => {
+export const decodeMorse = (morseCode) => {
     function decodeMorseLetter(letter) {
         return MORSE_CODE[letter];
     }
@@ -69,9 +69,7 @@ const decodeMorse = (morseCode) => {
     return morseCode.trim().split('   ').map(decodeMorseWord).join(' ');
 }
 
-console.log(decodeMorse('.... . -.--   .--- ..- -.. .')) // HEY JUDE
-
-const decodeMorseRegex = (morseCode) => {
+export const decodeMorseRegex = (morseCode) => {
     return morseCode
     .trim()
     .split(/  | /)
@@ -79,7 +77,7 @@ const decodeMorseRegex = (morseCode) => {
     .join('');
 }
 
-const anotherDecodeMorse = (morseCode) => {
+export const anotherDecodeMorse = (morseCode) => {
     const phraseSplit = morseCode.split('   ')
     const splitAndDecoded = phraseSplit.map(word => word.split(' ').map(code => MORSE_CODE[code]).join(''))
     return splitAndDecoded.join(' ').trim()
