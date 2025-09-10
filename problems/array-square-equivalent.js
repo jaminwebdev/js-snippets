@@ -14,7 +14,7 @@ export function arraySquareEquivalents(arr1, arr2) {
       // frequencyCounter1[val] ? frequencyCounter1[val]++ : frequencyCounter1[val] = 1;
     })
     
-      arr2.forEach( val => {
+    arr2.forEach( val => {
       frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
     })
     
@@ -30,35 +30,26 @@ export function arraySquareEquivalents(arr1, arr2) {
     return true;
   }
   
-  const array1=[1,2,4, 4];
-  const array2=[1,4,16, 16];
-  
-  // console.log(arraySquareEquivalents(array1, array2))
 
-  //alternative is to use a single dictionary/hashmap like in the anagram snippet
-  export function arraySquareEquivalents2(arr1, arr2) {
-    if(arr1.length !== arr2.length) {
+//alternative is to use a single dictionary/hashmap like in the anagram snippet
+export function arraySquareEquivalents2(arr1, arr2) {
+  if(arr1.length !== arr2.length) {
+    return false;
+  }
+  
+  let firstArraySquares = {};
+  
+  arr1.forEach( val => {
+    firstArraySquares[val ** 2] = (firstArraySquares[val ** 2] || 0) + 1;
+  })
+  
+  for(let number of arr2) {
+    if(!firstArraySquares[number]) { // doubles as property existence & falsy check if count === 0
       return false;
     }
-    
-    let firstArraySquares = {};
-    
-    arr1.forEach( val => {
-      firstArraySquares[val ** 2] = (firstArraySquares[val ** 2] || 0) + 1;
-    })
-    
-    for(let number of arr2) {
-      if(!firstArraySquares[number]) { // doubles as property existence & falsy check if count === 0
-        return false;
-      }
-      firstArraySquares[number]--; // if successive values in arr2 are reached but firstArraySquares[number] === 0, if check will fail & frequency is off
-    }
-    
-    return true;
+    firstArraySquares[number]--; // if successive values in arr2 are reached but firstArraySquares[number] === 0, if check will fail & frequency is off
   }
-
-  const firstArray=[1, 2, 4, 6, 4];
-    
-  const secondArray=[1, 16, 4, 16, 16];
   
-  console.log(arraySquareEquivalents2(firstArray, secondArray))
+  return true;
+}
+
