@@ -7,7 +7,8 @@ export const getMaxSubSum = (arr) => {
     for (let item of arr) { 
       partialSum += item;
       maxSum = Math.max(maxSum, partialSum);
-      // zero if negative - counters first element being negative & large negatives negating subsequent potentially larger sums
+      // zero if negative - counters first element being negative
+      // large negatives negate subsequent potentially larger sums
       // [1, 3, -7, 5, 1] -> -7 disproportionally effects the outcome of sums to follow
       // making it appear 1 & 3 (4) are the largest sum when it's actually 5, 1 (6)
       if (partialSum < 0) partialSum = 0; 
@@ -25,7 +26,6 @@ export const getMaxSubSum = (arr) => {
  * Time Complexity: O(n) where n is array length
  * Space Complexity: O(1) - only using a few variables
  */
-
  export const getMaxSubSumByWindowSize = (numbers, windowSize) => {
     if (!numbers.length || windowSize > numbers.length || windowSize <= 0) {
         return 0;
