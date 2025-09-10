@@ -1,10 +1,6 @@
 // given a sorted array
 // write a function that returns first and last position of a target
-
-const exampleArray = [2, 4, 5, 5, 5, 5, 5, 7, 9, 9];
-
 // becasue array is sorted, all items are adjacent to each other
-
 export const loopFirstAndLast = (arr, target) => {
     let start, finish
     for (let [index, num] of arr.entries()) {
@@ -24,8 +20,6 @@ export const loopFirstAndLast = (arr, target) => {
 
     return [start, finish]
 }
-
-// console.log(loopFirstAndLast(exampleArray, 5))
 
 // create lookup object w/target as key and array of indices as value
 // ex: { 5: [2, 3, 4, 5] }

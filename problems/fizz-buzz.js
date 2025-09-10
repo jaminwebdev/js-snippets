@@ -7,7 +7,7 @@ export const fizzBuzz = (num1 = 3, num2 = 5) => {
 
 fizzBuzz();
 
-export const fizzBuzzNorma = (num1 = 3, num2 = 5) => {
+export const fizzBuzzNormal = (num1 = 3, num2 = 5) => {
   for (let i = 1; i <= 100; i++) {
     if (i % (num1 * num2) === 0) {
       console.log("fizzbuzz")
