@@ -5,6 +5,6 @@
 
 // O(nlogn) assuming sorting function is O(nlogn)
 export const kthLargestSort = (arr, k) => {
-    const sortedArray = [...arr.sort((a,b) => a - b)];
-    return sortedArray[sortedArray.length - k]
+    const sortedArray = [...arr.sort((a,b) => b - a)];
+    return sortedArray[k - 1]
 }
