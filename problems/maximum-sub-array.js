@@ -1,6 +1,6 @@
 // "https://javascript.info/task/maximal-subarray";
 // no limit
-function getMaxSubSum(arr) {
+export const getMaxSubSum = (arr) => {
     let maxSum = 0;
     let partialSum = 0;
   
@@ -15,36 +15,43 @@ function getMaxSubSum(arr) {
   
     return maxSum;
   }
-  
-//  console.log( getMaxSubSum([-1, 2, 3, -9]) ); 
-//  console.log( getMaxSubSum([-1, 2, 3, -9, 11]) ); 
-//  console.log( getMaxSubSum([-2, -1, 1, 2]) );
-//  console.log( getMaxSubSum([100, -9, 2, -3, 5]) );
-//  console.log( getMaxSubSum([1, 2, 3]) ); 
-//  console.log( getMaxSubSum([-1, -2, -3]) );
 
- // given a length for the sub array, find the largest sum
- // ex: [1, 2, 3, 4] & length = 2 -> 3 & 4 are the largest making 7
- // ex: [2, 5, 1, 6, 3] & length = 4 -> 5, 1, 6, and 3 are largest making 15
- const getMaxSubSumByNum = (array, number) => {
-    if(array.length < number) return null;
-    let maxSum = 0;
-    let subSum = 0;
-    // max sum for first num elements
-    array.slice(0, number).forEach( value => maxSum += value);
+  /**
+ * Maximum Sum Subarray of Size K (Fixed Window)
+ * given a length for the sub array, find the largest sum
+ * ex: [1, 2, 3, 4] & length = 2 -> 3 & 4 are the largest making 7
+ * ex: [2, 5, 1, 6, 3] & length = 4 -> 5, 1, 6, and 3 are largest making 15
+ * 
+ * Time Complexity: O(n) where n is array length
+ * Space Complexity: O(1) - only using a few variables
+ */
 
-    subSum = maxSum;
-
-    // starting at num, 'slide' the window
-    // on each iteration, subtract the previous item from the temp/sub sum 
-    // but also add the current item & compare to max
-    // no need to recalculate ranges of indexes with nested loops
-    for(let index = number; index < array.length; index++) {
-        subSum = subSum - array[index - number] + array[index];
-        maxSum = Math.max(maxSum, subSum);
+ export const getMaxSubSumByWindowSize = (numbers, windowSize) => {
+    if (!numbers.length || windowSize > numbers.length || windowSize <= 0) {
+        return 0;
     }
-
-    return maxSum;
- }
-
- console.log(getMaxSubSumByNum([2, 1, 5, 1, 6, 2], 3)); //12
+    
+    // Step 1: Calculate sum of first window
+    let currentWindowSum = 0;
+    for (let i = 0; i < windowSize; i++) {
+        currentWindowSum += numbers[i];
+    }
+    
+    let maxSumFound = currentWindowSum;
+    
+    // Step 2: Slide the window - remove leftmost, add rightmost
+    for (let windowEndIndex = windowSize; windowEndIndex < numbers.length; windowEndIndex++) {
+        const windowStartIndex = windowEndIndex - windowSize;
+        
+        // Remove the element that's leaving the window (left side)
+        currentWindowSum -= numbers[windowStartIndex];
+        
+        // Add the element that's entering the window (right side)
+        currentWindowSum += numbers[windowEndIndex];
+        
+        // Update maximum if current window sum is larger
+        maxSumFound = Math.max(maxSumFound, currentWindowSum);
+    }
+    
+    return maxSumFound;
+}
