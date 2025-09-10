@@ -1,27 +1,54 @@
 // write a function that accepts an array and a target number
-// it should return the two numbers and their indices
+// it should return the two numbers
 // if not, return an empty array
-
 export const twoSum = (nums, target) => {
-  const numMap = {}; // Initialize an empty object to act as a hash map
+  const numMap = {};
 
-  for (let i = 0; i < nums.length; i++) {
-    const currentNum = nums[i];
-    const complement = target - currentNum;
+  for (let value of nums) {
+    const complement = target - value
 
-    // Check if the complement exists in the hash map
     if (complement in numMap) {
-      // If found, return the index of the complement and the current index
-      return [[complement, numMap[complement]], [currentNum, i]];
+      return [complement, value]
     }
 
-    // If the complement is not found, add the current number and its index to the map
-    numMap[currentNum] = i;
+    numMap[value] = true;
   }
 
-  // If no solution is found (though the problem usually guarantees one)
   return [];
 }
 
-const sampleArray = [1, 4, 6, 6, 8, 12, 4];
-console.log(twoSum(sampleArray, 8))
+/**
+ * More optimal approach if array is sorted
+ * Two Sum - Find two numbers in a sorted array that add up to target
+ * Uses two pointers starting from opposite ends moving towards each other
+ * 
+ * Time Complexity: O(n) where n is array length
+ * Space Complexity: O(1) - only using two pointers
+ */
+export const twoSumSorted = (sortedNumbers, targetSum) => {
+    let leftPointer = 0;
+    let rightPointer = sortedNumbers.length - 1;
+    
+    // Continue until pointers meet in the middle
+    while (leftPointer < rightPointer) {
+        const currentSum = sortedNumbers[leftPointer] + sortedNumbers[rightPointer];
+        
+        if (currentSum === targetSum) {
+            // Found the pair! Return the actual values
+            return [sortedNumbers[leftPointer], sortedNumbers[rightPointer]];
+        }
+        else if (currentSum < targetSum) {
+            // Sum is too small, we need a larger number
+            // Move left pointer right to get a larger left value
+            leftPointer++;
+        }
+        else {
+            // Sum is too large, we need a smaller number
+            // Move right pointer left to get a smaller right value
+            rightPointer--;
+        }
+    }
+    
+    // No valid pair found
+    return null;
+}
