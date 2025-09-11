@@ -41,6 +41,46 @@
 }
 
 /**
+ * Given an array of integers and a target number
+ * Return a minimal length subset of items that totals to that number
+ * ex: [2, 3, 1, 2, 4, 3] and 7 -> [4, 3] is the smallest subset
+ * Sliding window
+ * Fill window until sum is reached
+ * slide to right
+ * remove items until condition that > target is still maintained
+ */
+export const minSubArrayLen = (nums, target) => {
+  let prevTotal = 0;
+  let lowestRunCount = 0;
+
+  // find initial window where subset is >= to target
+  for (let i = 0; i < nums.length; i++) {
+    prevTotal += nums[i]
+    lowestRunCount++;
+    if (prevTotal >= target) {
+      break
+    }
+  }
+
+  if (prevTotal < target) {
+    return 0;
+  }
+
+  // 
+  for (let i = 1; i < nums.length; i++) {
+    const currentTotal = prevTotal - nums[i - 1]; // remove from the left
+    if (currentTotal >= target) { // check condition & update counts if true
+      lowestRunCount--;
+      prevTotal = currentTotal;
+    } else {
+      prevTotal = currentTotal + nums[i + lowestRunCount - 1]; // otherwise, add one from the right to reach total
+    }
+  }
+
+  return lowestRunCount;
+}
+
+/**
  * Average of All Subarrays of Size K (Fixed Window)
  * Find the average of every contiguous subarray of size k
  * 

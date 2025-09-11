@@ -5,7 +5,8 @@ import {
     findLongestSubstringWithoutRepeats,
     findMaxStockProfit,
     findLongestSubarrayWithSumLimit,
-    findMinimumWindowSubstring
+    findMinimumWindowSubstring,
+    minSubArrayLen
 } from '../problems/approaches/sliding-window.js';
 
 describe('Sliding Window Approaches', () => {
@@ -118,6 +119,32 @@ describe('Sliding Window Approaches', () => {
         it('should return an empty string for empty inputs', () => {
             expect(findMinimumWindowSubstring("", "a")).toBe("");
             expect(findMinimumWindowSubstring("a", "")).toBe("");
+        });
+    });
+
+    describe('minSubArrayLen', () => {
+        it('should find the minimal length of a subarray that sums to the target', () => {
+            expect(minSubArrayLen([2, 3, 1, 2, 4, 3], 7)).toBe(2);
+        });
+
+        it('should return 0 if no subarray sums to the target', () => {
+            expect(minSubArrayLen([1, 1, 1, 1], 5)).toBe(0);
+        });
+
+        it('should return the correct length when the subarray is at the beginning', () => {
+            expect(minSubArrayLen([3, 4, 1, 1, 6], 8)).toBe(3);
+        });
+
+        it('should handle cases where a single element meets the target', () => {
+            expect(minSubArrayLen([1, 4, 4], 4)).toBe(1);
+        });
+
+        it('should work for longer arrays', () => {
+            expect(minSubArrayLen([1, 2, 3, 4, 5], 11)).toBe(3);
+        });
+
+        it('should return 0 for an empty array', () => {
+            expect(minSubArrayLen([], 7)).toBe(0);
         });
     });
 });
